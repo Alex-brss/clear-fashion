@@ -92,7 +92,7 @@ console.log(sortedProductsByPrice);
 console.log('todo 5 :')
 
 function sortMarketplaceByDate(marketplace) {
-  return marketplace.sort((a, b) => a.released - b.released);
+  return marketplace.sort((a, b) =>new Date(a.released) - new Date (b.released));
 }
 
 const sortedProductsByDate = sortMarketplaceByDate(marketplace);
@@ -102,6 +102,11 @@ console.log(sortedProductsByDate);
 // 🎯 TODO 6: Filter a specific price range
 // 1. Filter the list of products between 50€ and 100€
 // 2. Log the list
+
+function filterMarketplaceByPrice(min, max, marketplace)
+{
+  return marketplace.sort((a,b)=>)
+}
 
 // 🎯 TODO 7: Average price
 // 1. Determine the average price of the marketplace
