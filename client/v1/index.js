@@ -22,6 +22,9 @@ const MY_FAVORITE_BRANDS = [
 console.table(MY_FAVORITE_BRANDS);
 console.log(MY_FAVORITE_BRANDS[0]);
 
+
+
+
 /**
  * 🌱
  * Let's go with a very very simple first todo
@@ -34,6 +37,8 @@ console.log(MY_FAVORITE_BRANDS[0]);
 // 1. Create a new variable and assign it the link of the cheapest t-shirt
 // I can find on these e-shops
 // 2. Log the variable
+const CHEAPEST_TSHIRT = "https://www.faguo-store.com/fr/326-t-shirts?order=product.price.asc";
+console.log(CHEAPEST_TSHIRT);
 
 /**
  * 👕
@@ -47,21 +52,52 @@ console.log(MY_FAVORITE_BRANDS[0]);
 // 🎯 TODO 2: Number of products
 // 1. Create a variable and assign it the number of products
 // 2. Log the variable
+const numberOfProducts = marketplace.length;
+console.log(numberOfProducts);
 
 // 🎯 TODO 3: Brands name
 // 1. Create a variable and assign it the list of brands name only
 // 2. Log the variable
 // 3. Log how many brands we have
+console.log('todo 3 : ');
+const brandNames = [];
+for(const product of marketplace)
+{
+  brandNames.push(product.brand);
+}
+let uniquebrandNames = [... new Set(brandNames)]
+console.log(uniquebrandNames);
 
 // 🎯 TODO 4: Sort by price
 // 1. Create a function to sort the marketplace products by price
 // 2. Create a variable and assign it the list of products by price from lowest to highest
 // 3. Log the variable
 
+console.log('todo 4 :')
+
+function sortMarketplaceByPrice(marketplace) {
+  return marketplace.sort((a, b) => a.price - b.price);
+}
+
+const sortedProductsByPrice = sortMarketplaceByPrice(marketplace);
+
+console.log(sortedProductsByPrice);
+
+
 // 🎯 TODO 5: Sort by date
 // 1. Create a function to sort the marketplace objects by products date
 // 2. Create a variable and assign it the list of products by date from recent to old
 // 3. Log the variable
+
+console.log('todo 5 :')
+
+function sortMarketplaceByDate(marketplace) {
+  return marketplace.sort((a, b) => a.released - b.released);
+}
+
+const sortedProductsByDate = sortMarketplaceByDate(marketplace);
+
+console.log(sortedProductsByDate);
 
 // 🎯 TODO 6: Filter a specific price range
 // 1. Filter the list of products between 50€ and 100€
