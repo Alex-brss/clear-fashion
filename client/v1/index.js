@@ -474,7 +474,7 @@ console.log(findProductByUuid(COTELE_PARIS,'2b9a47e3-ed73-52f6-8b91-379e9c8e526c
 // 1. Delete the product with the uuid `2b9a47e3-ed73-52f6-8b91-379e9c8e526c`
 // 2. Log the new list of product
 
-console.log('todo 3 :');
+console.log('todo 4 :');
 function deleteProductByUuid(marketplace,uuid){
   var i=0;
   if(findProductByUuid(marketplace,uuid)==-1)
@@ -518,8 +518,11 @@ jacket.favorite = true;
 // 2. What do you notice?
 console.log('todo 5 :');
 
+console.log(blueJacket);
 console.log(jacket);
-console.log(+blueJacket);
+
+
+//we can notice that the favorite feature of the blueJacket is also set to true, even if we didn't assign this feature and value directly to it. 
 
 // we make a new assignment again
 blueJacket = {
@@ -535,6 +538,10 @@ blueJacket = {
 };
 
 // 3. Update `jacket` property with `favorite` to true WITHOUT changing blueJacket properties
+jacket.favorite = true;
+console.log(blueJacket);
+console.log(jacket);
+
 
 /**
  * 🎬
@@ -545,3 +552,7 @@ blueJacket = {
 // 🎯 LAST TODO: Save in localStorage
 // 1. Save MY_FAVORITE_BRANDS in the localStorage
 // 2. log the localStorage
+console.log('last todo');
+localStorage.setItem('myFavBrands', JSON.stringify(MY_FAVORITE_BRANDS));
+
+console.log(JSON.parse(localStorage.getItem('myFavBrands')));
