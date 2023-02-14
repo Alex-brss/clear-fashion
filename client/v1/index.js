@@ -553,6 +553,6 @@ console.log(jacket);
 // 1. Save MY_FAVORITE_BRANDS in the localStorage
 // 2. log the localStorage
 console.log('last todo');
-localStorage.setItem('myFavBrands', JSON.stringify(MY_FAVORITE_BRANDS));
 
+localStorage.setItem('myFavBrands', JSON.stringify(MY_FAVORITE_BRANDS));
 console.log(JSON.parse(localStorage.getItem('myFavBrands')));
