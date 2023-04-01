@@ -2,7 +2,8 @@ const { connect } = require('http2');
 const {MongoClient} = require('mongodb');
 const fs = require('fs');
  
-var MONGODB_URI = process.env.mongoDB;
+var MONGODB_URI = process.env.MONGODB_URI;
+MONGODB_URI="mongodb+srv://Alexbr:Cookiemata2001@cluster0.qqzriy3.mongodb.net/test";
 const MONGODB_DB_NAME = 'clearfashion';
 var client, db, collection;
  
