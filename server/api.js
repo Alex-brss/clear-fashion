@@ -3,7 +3,6 @@ const cors = require('cors');
 const express = require('express');
 const helmet = require('helmet');
 const { connect } = require('http2');
-//const {MongoClient} = require('mongodb');
 const productsDb = require('./productsDatabase.js');
 
 const PORT = 8092;
@@ -42,6 +41,7 @@ app.get('/products/*', async (req, res) => {
 
 
 
-app.listen(PORT);
+//app.listen(process.env.PORT||8092,()=>console.log(`📡 Running on port ${process.env.PORT||8092}`));
+app.listen(PORT,()=>console.log(`📡 Running on port ${PORT}`));
 
-console.log(`📡 Running on port ${PORT}`);
+
