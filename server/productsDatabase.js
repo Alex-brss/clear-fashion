@@ -2,7 +2,7 @@ const { connect } = require('http2');
 const {MongoClient} = require('mongodb');
 const fs = require('fs');
  
-var MONGODB_URI = "mongodb+srv://Alexbr:Cookiemata2001@cluster0.qqzriy3.mongodb.net/test";
+var MONGODB_URI = process.env.mongoDB;
 const MONGODB_DB_NAME = 'clearfashion';
 var client, db, collection;
  
@@ -10,7 +10,7 @@ async function connectMongoDb(){
     console.log('Connecting to MongoDB ...');
     client = await MongoClient.connect(MONGODB_URI, {'useNewUrlParser': true});
     db =  client.db(MONGODB_DB_NAME)
-    collection = db.collection('products');
+    collection = db.collection('products'); 
 }
  
 async function productsPushMongoDb(){
@@ -59,7 +59,7 @@ async function fetchProductsByUuid(uuid) {
     console.log(`Fetching product with uuid=${uuid} from MongoDB ...`);
     const query = {_id: uuid};
     const result = await collection.findOne(query);
-    //console.log(result);
+    console.log(result);
     return result;
     //process.exit(0);
   }
