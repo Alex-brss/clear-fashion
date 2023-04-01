@@ -41,7 +41,7 @@ app.get('/products/*', async (req, res) => {
 
 
 
-//app.listen(process.env.PORT||8092,()=>console.log(`📡 Running on port ${process.env.PORT||8092}`));
-app.listen(PORT,()=>console.log(`📡 Running on port ${PORT}`));
+app.listen(process.env.PORT||8092,()=>console.log(`📡 Running on port ${process.env.PORT||8092}`));
+//app.listen(PORT,()=>console.log(`📡 Running on port ${PORT}`));
 
 
