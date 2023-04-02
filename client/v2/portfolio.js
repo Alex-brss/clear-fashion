@@ -155,8 +155,8 @@ const renderProducts = products => {
       return `
       <div class="product" id=${product._id}>
         <span>${product.brand}<br></span>
-        <a href="${product.link}" target="_blank">${product.name}</a>
-        <img src=${product.image} class="image">
+        <a href="${product.link}" target="_blank">${product.name}
+          <img src=${product.image} class="image"></a>
         <span>${product.price !== null ? product.price : 0}€<br></span>
         <span id="${product._id}-fav">`
       + ((JSON.parse(localStorage.getItem("favorites")) || []).includes(product._id) ? `❤️ <button onclick=deleteToFavorite("` + product._id + `")>Delete from favorite</button>` : `<button onclick=addToFavorite(currentProducts[${index}]._id)>Add to favorite</button>`) + `
