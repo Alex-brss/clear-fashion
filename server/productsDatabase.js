@@ -64,11 +64,19 @@ async function fetchProductsByUuid(uuid) {
 }
 
 async function fetchAllBrands(){
-    await connectMongoDb();
-    console.log('Fetching brands from MongoDB ...');
-    var result = "none";
-    result = await collection.distinct("brand");
-    return result;
+
+    try{
+        await connectMongoDb();
+        console.log('Fetching brands from MongoDB ...');
+        const result = await collection.distinct("brand");
+        return result;
+    }
+    catch (error) 
+    {
+        console.error('Error fetching brands:', error);
+        throw error;
+    } 
+    
 }
   
 module.exports={
