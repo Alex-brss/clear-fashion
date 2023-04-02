@@ -53,7 +53,7 @@ const setCurrentProducts = ({result, meta}) => {
 const fetchProducts = async (page = 1, size = 12, brand = "all", sortBy = "price-asc", filter = [false, false, false]) => {
   try {
     const response = await fetch(
-      `https://clear-fashion-alex-brss.vercel.app/?search?limit=${size * page}` + (brand !== "all" ? `&brand=${brand}` : "")
+      `https://clear-fashion-server-ochre.vercel.app/products/?search?limit=${size * page}` + (brand !== "all" ? `&brand=${brand}` : "")
     );
     const body = await response.json();
 

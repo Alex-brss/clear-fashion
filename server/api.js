@@ -37,6 +37,16 @@ app.get('/products/*', async (req, res) => {
   res.send(product);
 });
 
+app.get('/brands', async (req, res) => {
+  console.log("Requete : /brands, params : ", req.query);
+  var body = {}
+  body.success = true;
+  var brands = await productsDb.fetchAllBrands();
+  body.data = {}
+  body.data.result = brands;
+  res.send(body);
+});
+
 
 
 app.listen(process.env.PORT||8092,()=>console.log(`📡 Running on port ${process.env.PORT||8092}`));

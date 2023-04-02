@@ -51,7 +51,6 @@ async function fetchProducts(brand = undefined, maxPrice = undefined, sortedByPr
     result = await result.limit(limit).toArray();
     if (scrapedLessThanTwoWeeksAgo) result = result.filter(product => new Date(product.scrapDate) > new Date(Date.now() - 14 * 24 * 60 * 60 * 1000));
     return result;
-    //process.exit(0);
 }
 
 
@@ -62,12 +61,20 @@ async function fetchProductsByUuid(uuid) {
     const result = await collection.findOne(query);
     console.log(result);
     return result;
-    //process.exit(0);
-  }
+}
+
+async function fetchAllBrands(){
+    await connectMongoDb();
+    console.log('Fetching brands from MongoDB ...');
+    var result = "none";
+    result = await collection.distinct("brand");
+    return result;
+}
   
 module.exports={
     fetchProducts,
-    fetchProductsByUuid
+    fetchProductsByUuid,
+    fetchAllBrands
 }
  
 //productsPushMongoDb();
