@@ -16,6 +16,7 @@ h2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 #filters {
@@ -59,17 +60,21 @@ input[type="checkbox"] {
 }
 
 /* Product styles */
+
 #products {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(4, minmax(250px, 1fr));
   grid-gap: 1em;
   padding: 1em;
 }
 
+
 .product {
-  border: 1px solid #ccc;
-  padding: 1em;
-  text-align: center;
+  width: calc(100% / 3 - 20px);
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .product img {
@@ -105,12 +110,37 @@ input[type="checkbox"] {
 
 /* Indicator styles */
 #indicators {
-  margin-top: 2em;
+  margin: 2em auto;
+  max-width: 600px;
+  padding: 1em;
+  border: 1px solid #e1dfdf;
+  border-radius: 5px;
+  background-color: #fff;
 }
 
-#indicators span:first-child {
+#indicators h2 {
+  font-size: 2em;
+  color: #525252;
+  text-align: center;
+  /*margin-bottom: 1em;*/
+}
+
+#indicators div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5em;
+}
+
+#indicators span {
+  font-size: 1.2em;
+  color: #525252;
+}
+
+
+#indicators span:last-child {
   font-weight: bold;
-  margin-right: 0.5em;
+  color: #333;
 }
 /* Set a default background color and font for the entire page */
 body {
@@ -162,42 +192,10 @@ h1 {
   color: #666;
 }
 
-/* Style the indicators section */
-#indicators {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  margin: 20px 0;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
 
-#indicators h2 {
-  color: #333;
-  font-size: 24px;
-  margin: 0 0 20px 0;
-}
-
-#indicators div {
-  text-align: center;
-  width: calc(100% / 3 - 20px);
-  margin-bottom: 10px;
-}
-
-#indicators span:first-child {
-  color: #666;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-#indicators span:last-child {
-  color: #333;
-  font-size: 18px;
-}
 
 /* Style the products section */
+/*
 #products {
   display: flex;
   flex-wrap: wrap;
@@ -210,6 +208,7 @@ h1 {
 }
 
 /* Style the individual product items */
+/*
 .product {
   width: calc(100% / 3 - 20px);
   margin-bottom: 20px;
@@ -237,7 +236,7 @@ h1 {
   font-weight: bold;
   color: #333;
   margin-top: 10px;
-}
+}*/
 body {
   padding: 20px;
   margin: 0 auto;

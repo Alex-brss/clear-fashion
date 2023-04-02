@@ -41,7 +41,7 @@ async function sandbox (eshop = undefined, number = -1) {
         products = await montlimartbrand.scrape(eshop);
       }
       else if(eshop == 'dedicatedbrand'){
-        products = await dedicatedbrand.getProducts();
+        //products = await dedicatedbrand.getProducts();
       }
       else if(eshop.includes('dedicatedbrand')){//only fourty first products
         products = await dedicatedbrand.scrape(eshop);

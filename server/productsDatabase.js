@@ -34,7 +34,7 @@ async function productsPushMongoDb(){
     {
         console.log("No new products");
     }
-    //process.exit(0);
+    process.exit(0);
 }
  
 async function fetchProducts(brand = undefined, maxPrice = undefined, sortedByPrice = false, sortedByDate = false, scrapedLessThanTwoWeeksAgo = false,limit = 12){
