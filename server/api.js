@@ -7,7 +7,7 @@ const productsDb = require('./productsDatabase.js');
 
 const app = express();
 
-module.exports = app;
+
 
 app.use(require('body-parser').json());
 app.use(cors());
@@ -20,21 +20,37 @@ app.get('/', (request, response) => {
 });
 
 app.get('/products/search', async (req, res) => {
-  const limit = parseInt(req.query.limit) || 12;
-  const brand = req.query.brand || undefined;
-  const price = parseInt(req.query.price) || undefined;
-  
-  var products = await productsDb.fetchProducts(brand, price, true,false,false,limit);
-  if(products == null){console.log('no product found');products='No product found';}
 
-  res.send(products);
+  try
+  {
+    const limit = parseInt(req.query.limit) || 12;
+    const brand = req.query.brand || undefined;
+    const price = parseInt(req.query.price) || undefined;
+  
+    var products = await productsDb.fetchProducts(brand, price, true,false,false,limit);
+    if(products == null){console.log('no product found');products='No product found';}
+
+    res.send(products);
+  }
+  catch(e) {
+    console.error(e);
+    response.send({ error: "invalid search" });
+  }
+  
 });
 
 // Endpoint to get a product by UUID
-app.get('/products/*', async (req, res) => {
-  var product = await productsDb.fetchProductsByUuid(req.params[0]);
-  if(product == null){console.log('no product found');product='No product found';}
-  res.send(product);
+app.get('/products/:id', async (req, res) => {
+  try
+  {
+    var product = await productsDb.fetchProductsByUuid(req.params[0]);
+    if(product == null){console.log('no product found');product='No product found';}
+    res.send(product);
+  }
+  catch(e) {
+    console.error(e);
+    response.send({ error: "invalid search" });
+  } 
 });
 
 app.get('/brands', async (req, res) => {
@@ -50,5 +66,6 @@ app.get('/brands', async (req, res) => {
 
 
 app.listen(process.env.PORT||8092,()=>console.log(`📡 Running on port ${process.env.PORT||8092}`));
+module.exports = app;
 
 

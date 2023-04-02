@@ -53,7 +53,7 @@ const setCurrentProducts = ({result, meta}) => {
 const fetchProducts = async (page = 1, size = 12, brand = "all", sortBy = "price-asc", filter = [false, false, false]) => {
   try {
     const response = await fetch(
-      `https://clear-fashion-server-ochre.vercel.app/products/?search?limit=${size * page}` + (brand !== "all" ? `&brand=${brand}` : "")
+      `https://clear-fashion-server-ochre.vercel.app/products/search?limit=9999` + (brand !== "all" ? `&brand=${brand}` : "")
     );
     const body = await response.json();
 
@@ -127,7 +127,9 @@ const fetchProducts = async (page = 1, size = 12, brand = "all", sortBy = "price
     var result = result.slice((page - 1) * size, page * size);
     return {result, meta};
     
-  } catch (error) {
+  } 
+  catch (error) 
+  {
     console.error(error);
     return {currentProducts, currentPagination};
   }
@@ -140,17 +142,18 @@ const fetchProducts = async (page = 1, size = 12, brand = "all", sortBy = "price
 const renderProducts = products => {
   const fragment = document.createDocumentFragment();
   const div = document.createElement('div');
-  let i = -1;
+  //let i = -1;
   const template = products
-    .map(product => {
-      i++;
+    .map((product,index) => {
+      //i++;
       return `
-      <div class="product" id=${product.uuid}>
+      <div class="product" id=${product._id}>
         <span>${product.brand}</span>
         <a href="${product.link}" target="_blank">${product.name}</a>
-        <span>${product.price} </span><span id="${product.uuid}-fav">`
-      + ((JSON.parse(localStorage.getItem("favorites")) || []).includes(product.uuid) ? `❤️ <button onclick=deleteToFavorite("` + product.uuid + `")>Delete from favorite</button>` : `<button onclick=addToFavorite(currentProducts[${i}].uuid)>Add to favorite</button>`) + `
-      </span></div>
+        <span>${product.price} </span><span id="${product._id}-fav">`
+      + ((JSON.parse(localStorage.getItem("favorites")) || []).includes(product._id) ? `❤️ <button onclick=deleteToFavorite("` + product._id + `")>Delete from favorite</button>` : `<button onclick=addToFavorite(currentProducts[${i}]._id)>Add to favorite</button>`) + `
+      </span>
+      </div>
     `;
     })
     .join('');
@@ -232,7 +235,7 @@ const render = (products, pagination) => {
 async function fetchBrands() {
   try {
     const response = await fetch(
-      'https://clear-fashion-api.vercel.app/brands'
+      'https://clear-fashion-server-ochre.vercel.app/brands'
     );
     const body = await response.json();
 
