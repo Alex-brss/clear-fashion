@@ -75,7 +75,7 @@ const fetchProducts = async (page = 1, size = 12, brand = "all", sortBy = "price
       result = result.filter(product => product.price < 50);
     }
     if(filter[1]) {
-      result = result.filter(product => (new Date() - new Date(product.released)) / (1000 * 60 * 60 * 24) < 14);
+      result = result.filter(product => (new Date() - new Date(product.scrapDate)) / (1000 * 60 * 60 * 24) < 14);
     }
     if(filter[2]) {
       result = result.filter(product => (JSON.parse(localStorage.getItem("favorites")) || []).includes(product._id));
@@ -149,10 +149,9 @@ const fetchProducts = async (page = 1, size = 12, brand = "all", sortBy = "price
 const renderProducts = products => {
   const fragment = document.createDocumentFragment();
   const div = document.createElement('div');
-  //let i = -1;
   const template = products
     .map((product,index) => {
-      //i++;
+      
       return `
       <div class="product" id=${product._id}>
         <span>${product.brand}<br></span>

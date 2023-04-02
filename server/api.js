@@ -7,8 +7,6 @@ const productsDb = require('./productsDatabase.js');
 
 const app = express();
 
-
-
 app.use(require('body-parser').json());
 app.use(cors());
 app.use(helmet());
@@ -20,7 +18,6 @@ app.get('/', (request, response) => {
 });
 
 app.get('/products/search', async (req, res) => {
-
   try
   {
     const limit = parseInt(req.query.limit) || 12;

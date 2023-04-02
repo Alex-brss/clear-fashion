@@ -6,12 +6,9 @@ const montlimartbrand = require('./eshops/montlimartbrand');
 const circlesportswear = require('./eshops/circlesportswearbrand');
 
 const link = [
-  "https://shop.circlesportswear.com/collections/all", //tout le site
-  //"https://www.montlimart.com/99-vetements", //tout le site
-  //"https://www.montlimart.com/14-chaussures",
-  //"https://www.montlimart.com/15-accessoires",
-  "montlimart",//tout le site
-  "dedicatedbrand"//tout le site
+  "https://shop.circlesportswear.com/collections/all", 
+  "montlimart",
+  "dedicatedbrand"
 ]
 
 async function sandbox (eshop = undefined, number = -1) {
