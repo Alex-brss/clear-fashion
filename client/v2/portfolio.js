@@ -57,11 +57,11 @@ const fetchProducts = async (page = 1, size = 12, brand = "all", sortBy = "price
     );
     const body = await response.json();
 
-    if (body.success !== true) {
+    if (body.error) {
       console.error(body);
       return {currentProducts, currentPagination};
     }
-    var result = body.data.result;
+    var result = body.data;
     
     // filters
     if(filter[0]) {
