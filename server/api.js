@@ -30,11 +30,11 @@ app.get('/products/search', async (req, res) => {
     var products = await productsDb.fetchProducts(brand, price, true,false,false,limit);
     if(products == null){console.log('no product found');products='No product found';}
 
-    res.send(products);
+    res.send({result:products});
   }
   catch(e) {
     console.error(e);
-    response.send({ error: "invalid search" });
+    res.send({ error:"invalid search : no product found"});
   }
   
 });
@@ -45,11 +45,11 @@ app.get('/products/:id', async (req, res) => {
   {
     var product = await productsDb.fetchProductsByUuid(req.params[0]);
     if(product == null){console.log('no product found');product='No product found';}
-    res.send(product);
+    res.send({result : product});
   }
   catch(e) {
     console.error(e);
-    response.send({ error: "invalid search" });
+    res.send({ error:"invalid search : no product found"});
   } 
 });
 
